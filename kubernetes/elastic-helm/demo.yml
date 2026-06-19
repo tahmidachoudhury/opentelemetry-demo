@@ -3,6 +3,11 @@ default:
   image:
     repository: ghcr.io/elastic/opentelemetry-demo
     tag: 2.2.1
+  resources:
+    limits:
+      cpu: "2"
+    requests:
+      cpu: "0.5"
   envOverrides:
     - name: OTEL_SERVICE_NAME
       valueFrom:
@@ -38,11 +43,17 @@ components:
   fraud-detection:
     resources:
       limits:
+        cpu: "2"
         memory: 512Mi
+      requests:
+        cpu: "0.5"
   kafka:
     resources:
       limits:
+        cpu: "2"
         memory: 800Mi
+      requests:
+        cpu: "0.5"
 
   load-generator:
     envOverrides:
